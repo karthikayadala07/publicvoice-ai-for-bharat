@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scheme Finder - Your Gateway to Government Benefits</title>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+Telugu&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- SPLASH / LANGUAGE SELECTION -->
+<div id="splash-screen" class="splash-screen active">
+  <div class="splash-content">
+    <div class="splash-logo">
+      <div class="logo-icon">🏛️</div>
+      <h1>Scheme Finder</h1>
+      <p>Select your preferred language / अपनी भाषा चुनें</p>
+    </div>
+    <div class="language-grid">
+      <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">
+        <span class="lang-flag">🇮🇳</span>
+        <span>English</span>
+      </button>
+      <button class="lang-btn" data-lang="hi" onclick="setLanguage('hi')">
+        <span class="lang-flag">🇮🇳</span>
+        <span>हिंदी</span>
+      </button>
+      <button class="lang-btn" data-lang="te" onclick="setLanguage('te')">
+        <span class="lang-flag">🇮🇳</span>
+        <span>తెలుగు</span>
+      </button>
+      <button class="lang-btn" data-lang="ta" onclick="setLanguage('ta')">
+        <span class="lang-flag">🇮🇳</span>
+        <span>தமிழ்</span>
+      </button>
+      <button class="lang-btn" data-lang="kn" onclick="setLanguage('kn')">
+        <span class="lang-flag">🇮🇳</span>
+        <span>ಕನ್ನಡ</span>
+      </button>
+      <button class="lang-btn" data-lang="mr" onclick="setLanguage('mr')">
+        <span class="lang-flag">🇮🇳</span>
+        <span>मराठी</span>
+      </button>
+      <button class="lang-btn" data-lang="bn" onclick="setLanguage('bn')">
+        <span class="lang-flag">🇮🇳</span>
+        <span>বাংলা</span>
+      </button>
+    </div>
+    <button class="btn-primary splash-continue" onclick="closeSplash()">
+      Continue <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="nav-logo" onclick="showPage('home')">
+      <span class="logo-emoji">🏛️</span>
+      <span class="logo-text">Scheme<span class="accent">Finder</span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#" onclick="showPage('home')" class="nav-link active" data-key="nav_home">Home</a>
+      <a href="#" onclick="showPage('schemes')" class="nav-link" data-key="nav_schemes">Find Schemes</a>
+      <a href="#" onclick="showPage('career')" class="nav-link" data-key="nav_career">Career Guide</a>
+      <a href="#" onclick="showPage('about')" class="nav-link" data-key="nav_about">About</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-lang-switch" onclick="showLanguageModal()">
+        <i class="fas fa-globe"></i> <span id="currentLangLabel">EN</span>
+      </button>
+      <button class="btn-speak" onclick="toggleSpeech()" id="speakBtn" title="Tap to Speak">
+        <i class="fas fa-microphone"></i>
+      </button>
+      <button class="btn-outline" onclick="showPage('login')" data-key="nav_login">Login</button>
+      <button class="btn-primary" onclick="showPage('register')" data-key="nav_register">Register</button>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ===================== HOME PAGE ===================== -->
+<div id="page-home" class="page active">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-star"></i> <span data-key="hero_badge">India's #1 Scheme Discovery Platform</span></div>
+      <h1 class="hero-title" data-key="hero_title">Find Government Schemes<br><span class="gradient-text">Made For You</span></h1>
+      <p class="hero-sub" data-key="hero_sub">Enter your details once. Discover all government benefits, scholarships, and welfare schemes you're eligible for — instantly.</p>
+      <div class="hero-btns">
+        <button class="btn-primary btn-lg" onclick="showPage('schemes')" data-key="hero_cta1">
+          <i class="fas fa-search"></i> Find My Schemes
+        </button>
+        <button class="btn-outline btn-lg" onclick="showPage('career')" data-key="hero_cta2">
+          <i class="fas fa-graduation-cap"></i> Career Guide
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">500+</span><span class="stat-label" data-key="stat1">Schemes Listed</span></div>
+        <div class="stat"><span class="stat-num">2M+</span><span class="stat-label" data-key="stat2">Users Helped</span></div>
+        <div class="stat"><span class="stat-num">7</span><span class="stat-label" data-key="stat3">Languages</span></div>
+        <div class="stat"><span class="stat-num">28+</span><span class="stat-label" data-key="stat4">States Covered</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-card card1">
+        <i class="fas fa-rupee-sign"></i>
+        <div>
+          <b>PM Kisan</b>
+          <small>₹6000/year</small>
+        </div>
+      </div>
+      <div class="floating-card card2">
+        <i class="fas fa-graduation-cap"></i>
+        <div>
+          <b>Scholarship</b>
+          <small>OBC Students</small>
+        </div>
+      </div>
+      <div class="floating-card card3">
+        <i class="fas fa-home"></i>
+        <div>
+          <b>PM Awas</b>
+          <small>Housing Scheme</small>
+        </div>
+      </div>
+      <div class="hero-center-graphic">
+        <div class="pulse-ring"></div>
+        <div class="center-icon">🇮🇳</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-key="hiw_title">How It Works</h2>
+        <p data-key="hiw_sub">Get matched to government schemes in 4 simple steps</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-icon">👤</div>
+          <h3 data-key="step1_title">Enter Your Details</h3>
+          <p data-key="step1_desc">Provide basic info: age, income, occupation, category (SC/ST/OBC/General)</p>
+        </div>
+        <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-icon">🔍</div>
+          <h3 data-key="step2_title">Eligibility Check</h3>
+          <p data-key="step2_desc">Our system checks eligibility rules for hundreds of central and state schemes</p>
+        </div>
+        <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-icon">📋</div>
+          <h3 data-key="step3_title">View Matching Schemes</h3>
+          <p data-key="step3_desc">Get a personalized list of all schemes you qualify for</p>
+        </div>
+        <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <div class="step-icon">📄</div>
+          <h3 data-key="step4_title">Apply with Guidance</h3>
+          <p data-key="step4_desc">See benefits, required documents, and apply directly via official links</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED SCHEMES -->
+  <section class="featured-schemes">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-key="fs_title">Popular Schemes</h2>
+        <p data-key="fs_sub">Most searched government schemes across India</p>
+      </div>
+      <div class="scheme-cards-grid" id="featuredSchemes"></div>
+      <button class="btn-primary btn-center" onclick="showPage('schemes')" data-key="fs_btn">View All Schemes →</button>
+    </div>
+  </section>
+
+  <!-- QUICK CATEGORIES -->
+  <section class="categories-section">
+    <div class="container">
+      <h2 data-key="cat_title">Browse by Category</h2>
+      <div class="cat-grid">
+        <div class="cat-card" onclick="filterSchemes('agriculture')"><div class="cat-icon">🌾</div><span data-key="cat_agri">Agriculture</span></div>
+        <div class="cat-card" onclick="filterSchemes('education')"><div class="cat-icon">📚</div><span data-key="cat_edu">Education</span></div>
+        <div class="cat-card" onclick="filterSchemes('health')"><div class="cat-icon">🏥</div><span data-key="cat_health">Health</span></div>
+        <div class="cat-card" onclick="filterSchemes('housing')"><div class="cat-icon">🏠</div><span data-key="cat_house">Housing</span></div>
+        <div class="cat-card" onclick="filterSchemes('women')"><div class="cat-icon">👩</div><span data-key="cat_women">Women</span></div>
+        <div class="cat-card" onclick="filterSchemes('business')"><div class="cat-icon">💼</div><span data-key="cat_biz">Business</span></div>
+        <div class="cat-card" onclick="filterSchemes('pension')"><div class="cat-icon">👴</div><span data-key="cat_pension">Pension</span></div>
+        <div class="cat-card" onclick="filterSchemes('youth')"><div class="cat-icon">🧑</div><span data-key="cat_youth">Youth</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP BY STEP GUIDANCE PREVIEW -->
+  <section class="guidance-preview">
+    <div class="container">
+      <div class="guidance-inner">
+        <div class="guidance-text">
+          <h2 data-key="gp_title">Step-by-Step Application Guidance</h2>
+          <p data-key="gp_desc">We don't just show you schemes — we walk you through every step of the application process. From document collection to final submission, we're with you all the way.</p>
+          <ul class="guidance-list">
+            <li><i class="fas fa-check-circle"></i> <span data-key="gp1">Document checklist for each scheme</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-key="gp2">Office/portal where to apply</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-key="gp3">Common mistakes to avoid</span></li>
+            <li><i class="fas fa-check-circle"></i> <span data-key="gp4">Status tracking guidance</span></li>
+          </ul>
+          <button class="btn-primary" onclick="showPage('schemes')" data-key="gp_btn">Get Guidance →</button>
+        </div>
+        <div class="guidance-visual">
+          <div class="guide-step-visual">
+            <div class="gsv-item active"><span class="gsv-num">01</span><span>Check Eligibility</span></div>
+            <div class="gsv-item"><span class="gsv-num">02</span><span>Collect Documents</span></div>
+            <div class="gsv-item"><span class="gsv-num">03</span><span>Fill Application</span></div>
+            <div class="gsv-item"><span class="gsv-num">04</span><span>Submit & Track</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== LOGIN PAGE ===================== -->
+<div id="page-login" class="page">
+  <div class="auth-container">
+    <div class="auth-left">
+      <div class="auth-left-content">
+        <div class="auth-logo" onclick="showPage('home')">🏛️ SchemeFinder</div>
+        <h2 data-key="login_welcome">Welcome Back!</h2>
+        <p data-key="login_sub">Login to access your saved schemes and personalized recommendations</p>
+        <div class="auth-features">
+          <div class="auth-feat"><i class="fas fa-bookmark"></i> <span data-key="af1">Saved Schemes</span></div>
+          <div class="auth-feat"><i class="fas fa-bell"></i> <span data-key="af2">Scheme Alerts</span></div>
+          <div class="auth-feat"><i class="fas fa-history"></i> <span data-key="af3">Application History</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="auth-right">
+      <div class="auth-form-box">
+        <h2 data-key="login_title">Sign In</h2>
+        <p class="auth-toggle" data-key="login_no_acc">Don't have an account? <a href="#" onclick="showPage('register')" data-key="login_register_link">Register here</a></p>
+        
+        <div class="form-group">
+          <label data-key="login_phone">Mobile Number / Email</label>
+          <div class="input-with-icon">
+            <i class="fas fa-user"></i>
+            <input type="text" id="loginId" placeholder="Enter mobile or email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-key="login_pass">Password</label>
+          <div class="input-with-icon">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="loginPass" placeholder="Enter password">
+            <i class="fas fa-eye toggle-pass" onclick="togglePass('loginPass')"></i>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="checkbox-label"><input type="checkbox"> <span data-key="login_remember">Remember me</span></label>
+          <a href="#" class="forgot-link" data-key="login_forgot">Forgot password?</a>
+        </div>
+        <button class="btn-primary btn-full" onclick="doLogin()" data-key="login_btn">Login</button>
+        
+        <div class="or-divider"><span data-key="login_or">OR</span></div>
+        <button class="btn-social" onclick="socialLogin('google')"><i class="fab fa-google"></i> <span data-key="login_google">Continue with Google</span></button>
+        
+        <div class="lang-voice-row">
+          <button class="btn-voice-small" onclick="startVoiceInput('loginId')" data-key="login_voice"><i class="fas fa-microphone"></i> Voice Input</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== REGISTER PAGE ===================== -->
+<div id="page-register" class="page">
+  <div class="auth-container">
+    <div class="auth-left register-left">
+      <div class="auth-left-content">
+        <div class="auth-logo" onclick="showPage('home')">🏛️ SchemeFinder</div>
+        <h2 data-key="reg_welcome">Join SchemeFinder</h2>
+        <p data-key="reg_sub">Create your free account and discover government schemes tailored just for you</p>
+        <div class="auth-features">
+          <div class="auth-feat"><i class="fas fa-search"></i> <span data-key="rf1">Personalized Scheme Matches</span></div>
+          <div class="auth-feat"><i class="fas fa-language"></i> <span data-key="rf2">7 Language Support</span></div>
+          <div class="auth-feat"><i class="fas fa-headset"></i> <span data-key="rf3">24/7 AI Support</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="auth-right">
+      <div class="auth-form-box">
+        <h2 data-key="reg_title">Create Account</h2>
+        <p class="auth-toggle" data-key="reg_have_acc">Already have an account? <a href="#" onclick="showPage('login')" data-key="reg_login_link">Sign in</a></p>
+        
+        <div class="form-row-2">
+          <div class="form-group">
+            <label data-key="reg_fname">First Name</label>
+            <input type="text" id="regFname" placeholder="First name">
+          </div>
+          <div class="form-group">
+            <label data-key="reg_lname">Last Name</label>
+            <input type="text" id="regLname" placeholder="Last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-key="reg_phone">Mobile Number</label>
+          <div class="input-with-icon">
+            <i class="fas fa-phone"></i>
+            <input type="tel" id="regPhone" placeholder="+91 XXXXXXXXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-key="reg_email">Email (Optional)</label>
+          <div class="input-with-icon">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="regEmail" placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label data-key="reg_state">State</label>
+            <select id="regState">
+              <option value="">Select State</option>
+              <option>Andhra Pradesh</option>
+              <option>Telangana</option>
+              <option>Tamil Nadu</option>
+              <option>Karnataka</option>
+              <option>Maharashtra</option>
+              <option>Uttar Pradesh</option>
+              <option>Bihar</option>
+              <option>West Bengal</option>
+              <option>Rajasthan</option>
+              <option>Gujarat</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-key="reg_cat">Category</label>
+            <select id="regCat">
+              <option value="">Category</option>
+              <option>General</option>
+              <option>OBC</option>
+              <option>SC</option>
+              <option>ST</option>
+              <option>EWS</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-key="reg_pass">Create Password</label>
+          <div class="input-with-icon">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="regPass" placeholder="Min 8 characters">
+            <i class="fas fa-eye toggle-pass" onclick="togglePass('regPass')"></i>
+          </div>
+        </div>
+        <label class="checkbox-label"><input type="checkbox" id="regTerms"> <span data-key="reg_terms">I agree to <a href="#">Terms & Conditions</a></span></label>
+        <button class="btn-primary btn-full" onclick="doRegister()" data-key="reg_btn">Create Account</button>
+        <div class="lang-voice-row">
+          <button class="btn-voice-small" onclick="startVoiceInput('regPhone')" data-key="reg_voice"><i class="fas fa-microphone"></i> Voice Input</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCHEMES PAGE ===================== -->
+<div id="page-schemes" class="page">
+  <div class="schemes-layout">
+    <!-- Filter Sidebar -->
+    <aside class="filter-sidebar" id="filterSidebar">
+      <div class="filter-header">
+        <h3 data-key="filter_title">🔍 Find Your Schemes</h3>
+        <button class="close-filter" onclick="toggleFilterSidebar()"><i class="fas fa-times"></i></button>
+      </div>
+      
+      <!-- Voice Input -->
+      <div class="voice-search-box">
+        <button class="voice-search-btn" onclick="startSchemeVoiceSearch()" id="voiceSearchBtn">
+          <i class="fas fa-microphone"></i>
+          <span data-key="voice_search">Tap & Speak your details</span>
+        </button>
+      </div>
+
+      <div class="filter-group">
+        <label data-key="f_age">Age</label>
+        <input type="number" id="fAge" placeholder="Your age" min="0" max="100">
+      </div>
+      <div class="filter-group">
+        <label data-key="f_income">Annual Income (₹)</label>
+        <select id="fIncome">
+          <option value="">Select Range</option>
+          <option value="0-50000">Below ₹50,000</option>
+          <option value="50000-100000">₹50,000 - ₹1 Lakh</option>
+          <option value="100000-250000">₹1L - ₹2.5L</option>
+          <option value="250000-500000">₹2.5L - ₹5L</option>
+          <option value="500000+">Above ₹5L</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label data-key="f_occ">Occupation</label>
+        <select id="fOcc">
+          <option value="">Select Occupation</option>
+          <option value="farmer">Farmer</option>
+          <option value="student">Student</option>
+          <option value="labour">Daily Wage Labour</option>
+          <option value="business">Small Business</option>
+          <option value="govt">Government Employee</option>
+          <option value="private">Private Employee</option>
+          <option value="unemployed">Unemployed</option>
+          <option value="self">Self Employed</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label data-key="f_cat">Category</label>
+        <select id="fCat">
+          <option value="">Select Category</option>
+          <option value="general">General</option>
+          <option value="obc">OBC</option>
+          <option value="sc">SC</option>
+          <option value="st">ST</option>
+          <option value="ews">EWS</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label data-key="f_gender">Gender</label>
+        <select id="fGender">
+          <option value="">Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label data-key="f_state">State</label>
+        <select id="fState">
+          <option value="">All States</option>
+          <option>Andhra Pradesh</option>
+          <option>Telangana</option>
+          <option>Tamil Nadu</option>
+          <option>Karnataka</option>
+          <option>Maharashtra</option>
+          <option>Uttar Pradesh</option>
+          <option>Bihar</option>
+          <option>West Bengal</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label data-key="f_type">Scheme Type</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" value="central"> Central Govt</label>
+          <label><input type="checkbox" value="state"> State Govt</label>
+          <label><input type="checkbox" value="scholarship"> Scholarship</label>
+          <label><input type="checkbox" value="pension"> Pension</label>
+        </div>
+      </div>
+      <button class="btn-primary btn-full" onclick="searchSchemes()" data-key="f_search_btn">
+        <i class="fas fa-search"></i> Find Schemes
+      </button>
+      <button class="btn-outline btn-full" onclick="resetFilters()" data-key="f_reset">Reset Filters</button>
+    </aside>
+
+    <!-- Schemes Main -->
+    <main class="schemes-main">
+      <div class="schemes-topbar">
+        <div class="schemes-count"><span id="schemeCount">0</span> <span data-key="schemes_found">schemes found</span></div>
+        <div class="schemes-sort">
+          <button class="filter-toggle-btn" onclick="toggleFilterSidebar()"><i class="fas fa-filter"></i> Filters</button>
+          <select id="sortSchemes" onchange="sortSchemeResults()">
+            <option value="relevance" data-key="sort_rel">Most Relevant</option>
+            <option value="az" data-key="sort_az">A - Z</option>
+            <option value="benefit" data-key="sort_ben">Highest Benefit</option>
+          </select>
+        </div>
+      </div>
+      <div id="schemesResults" class="schemes-results">
+        <div class="no-search-yet">
+          <div class="nsy-icon">🔍</div>
+          <h3 data-key="nsy_title">Enter your details to find matching schemes</h3>
+          <p data-key="nsy_sub">Fill the filters on the left to get personalized results</p>
+          <button class="btn-primary" onclick="searchSchemes()" data-key="nsy_btn">Show All Schemes</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ===================== CAREER PAGE ===================== -->
+<div id="page-career" class="page">
+  <!-- Career Hero -->
+  <section class="career-hero">
+    <div class="container">
+      <div class="career-hero-content">
+        <div class="career-badge"><i class="fas fa-robot"></i> AI-Powered Career Guidance</div>
+        <h1 data-key="ch_title">Discover Your <span class="gradient-text">Perfect Career Path</span></h1>
+        <p data-key="ch_sub">Personalized career guidance for every student — from 10th grade to post-graduation. Our AI analyzes your strengths and suggests the best paths.</p>
+        <div class="career-hero-btns">
+          <button class="btn-primary btn-lg" onclick="showCareerSection('predictor')" data-key="ch_btn1">
+            <i class="fas fa-magic"></i> AI Career Predictor
+          </button>
+          <button class="btn-outline btn-lg" onclick="showCareerSection('explore')" data-key="ch_btn2">
+            <i class="fas fa-compass"></i> Explore Careers
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Career Stage Tabs -->
+  <section class="career-stages">
+    <div class="container">
+      <div class="stage-tabs">
+        <button class="stage-tab active" onclick="showStage('10th')" data-key="st_10">After 10th</button>
+        <button class="stage-tab" onclick="showStage('12th')" data-key="st_12">After 12th</button>
+        <button class="stage-tab" onclick="showStage('grad')" data-key="st_grad">After Graduation</button>
+        <button class="stage-tab" onclick="showStage('pg')" data-key="st_pg">After Post-Grad</button>
+      </div>
+      <div id="careerStageContent" class="career-stage-content"></div>
+    </div>
+  </section>
+
+  <!-- AI Career Predictor -->
+  <section class="career-predictor" id="career-predictor-section">
+    <div class="container">
+      <div class="predictor-header">
+        <h2 data-key="cp_title">🤖 AI Career Predictor</h2>
+        <p data-key="cp_sub">Answer a few questions and our AI will suggest the best career paths for you</p>
+      </div>
+      <div class="quiz-container" id="quizContainer">
+        <div class="quiz-progress">
+          <div class="quiz-progress-bar" id="quizProgress"></div>
+          <span id="quizProgressText">Question 1 of 8</span>
+        </div>
+        <div id="quizContent"></div>
+      </div>
+      <div id="quizResults" class="quiz-results hidden"></div>
+    </div>
+  </section>
+
+  <!-- Career FAQs -->
+  <section class="career-faqs">
+    <div class="container">
+      <h2 data-key="faq_title">Frequently Asked Questions</h2>
+      <div class="faq-list" id="faqList"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== SCHEME DETAIL MODAL ===================== -->
+<div id="schemeModal" class="modal-overlay" onclick="closeSchemeModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('schemeModal').classList.remove('active')"><i class="fas fa-times"></i></button>
+    <div id="schemeModalContent"></div>
+  </div>
+</div>
+
+<!-- ===================== AI CHATBOT ===================== -->
+<div id="chatbot" class="chatbot-container">
+  <div class="chatbot-header">
+    <div class="chatbot-avatar"><i class="fas fa-robot"></i></div>
+    <div class="chatbot-info">
+      <strong data-key="bot_name">Sahayak AI</strong>
+      <small data-key="bot_status">Online • Support & Complaints</small>
+    </div>
+    <button class="chatbot-close" onclick="toggleChatbot()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="chatbot-messages" id="chatMessages">
+    <div class="chat-msg bot">
+      <div class="chat-bubble" data-key="bot_welcome">
+        Namaste! 🙏 I'm Sahayak AI. I can help you find schemes, file complaints, or answer any questions. What do you need help with?
+      </div>
+      <div class="chat-quick-btns">
+        <button onclick="sendQuickMsg('Find schemes for me')" data-key="qb1">Find Schemes</button>
+        <button onclick="sendQuickMsg('File a complaint')" data-key="qb2">File Complaint</button>
+        <button onclick="sendQuickMsg('How to apply for scheme?')" data-key="qb3">How to Apply</button>
+        <button onclick="sendQuickMsg('Career guidance')" data-key="qb4">Career Help</button>
+      </div>
+    </div>
+  </div>
+  <div class="chatbot-input-area">
+    <button class="chat-voice-btn" onclick="startChatVoice()" id="chatVoiceBtn"><i class="fas fa-microphone"></i></button>
+    <input type="text" id="chatInput" placeholder="Type or speak your message..." onkeydown="if(event.key==='Enter')sendChatMsg()">
+    <button class="chat-send-btn" onclick="sendChatMsg()"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+<button class="chatbot-toggle" onclick="toggleChatbot()" id="chatbotToggle">
+  <i class="fas fa-comment-dots"></i>
+  <span class="chat-badge" id="chatBadge">1</span>
+</button>
+
+<!-- LANGUAGE MODAL -->
+<div id="langModal" class="modal-overlay" onclick="closeLangModal(event)">
+  <div class="modal-box small-modal">
+    <h3 data-key="lm_title">Choose Language</h3>
+    <div class="language-grid">
+      <button class="lang-btn" data-lang="en" onclick="setLanguage('en');closeLangModal()">🇮🇳 English</button>
+      <button class="lang-btn" data-lang="hi" onclick="setLanguage('hi');closeLangModal()">🇮🇳 हिंदी</button>
+      <button class="lang-btn" data-lang="te" onclick="setLanguage('te');closeLangModal()">🇮🇳 తెలుగు</button>
+      <button class="lang-btn" data-lang="ta" onclick="setLanguage('ta');closeLangModal()">🇮🇳 தமிழ்</button>
+      <button class="lang-btn" data-lang="kn" onclick="setLanguage('kn');closeLangModal()">🇮🇳 ಕನ್ನಡ</button>
+      <button class="lang-btn" data-lang="mr" onclick="setLanguage('mr');closeLangModal()">🇮🇳 मराठी</button>
+      <button class="lang-btn" data-lang="bn" onclick="setLanguage('bn');closeLangModal()">🇮🇳 বাংলা</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST NOTIFICATIONS -->
+<div id="toastContainer" class="toast-container"></div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">🏛️ SchemeFinder</div>
+        <p data-key="footer_desc">Connecting citizens with government benefits. Your rights, made simple.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4 data-key="fl_schemes">Schemes</h4>
+        <a href="#">Agriculture</a>
+        <a href="#">Education</a>
+        <a href="#">Health</a>
+        <a href="#">Housing</a>
+      </div>
+      <div class="footer-links">
+        <h4 data-key="fl_career">Career</h4>
+        <a href="#">After 10th</a>
+        <a href="#">After 12th</a>
+        <a href="#">After Graduation</a>
+        <a href="#">AI Predictor</a>
+      </div>
+      <div class="footer-links">
+        <h4 data-key="fl_support">Support</h4>
+        <a href="#">Help Center</a>
+        <a href="#">File Complaint</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 SchemeFinder. Made with ❤️ for India. | All scheme info sourced from official government portals.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="translations.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
